@@ -22,7 +22,10 @@ int main(int argc, char const *argv[])
         exit(1);
     }
     dup2(srcfd, 1);
-    close(srcfd);
+    if(srcfd != 1)
+    {
+        close(srcfd);
+    }
 
     puts("hello world.");
     return 0;
