@@ -15,3 +15,4 @@ endif()
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
 
 add_subdirectory(IO)
+add_subdirectory(FileSystem)
