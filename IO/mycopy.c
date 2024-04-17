@@ -16,7 +16,7 @@ int main(int argc, char const *argv[])
     }
 
     int srcfd, desfd;
-    int read_len, write_len;
+    int read_len, write_len, pos;
     char buf[MAXSIZE];
 
     srcfd = open(argv[1], O_RDONLY);
@@ -32,14 +32,21 @@ int main(int argc, char const *argv[])
         }
         else if (read_len == 0)
         {
-            printf("read null");
+            printf("read none");
             break;
         }
-        
-        write_len = write(desfd, buf, read_len);
-        if (write_len < 0)
+
+        pos = 0;
+        while (read_len > 0)
         {
-            perror("write()");
+            write_len = write(desfd, buf + pos, read_len);
+            if (write_len < 0)
+            {
+                perror("write()");
+                exit(1);
+            }
+            pos += write_len;
+            read_len -= write_len;
         }
     }
     
