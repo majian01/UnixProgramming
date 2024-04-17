@@ -8,7 +8,6 @@
 int main(int argc, char const *argv[])
 {
 
-    close(1);
     if (argc < 2)
     {
         perror("argc < 2");
@@ -16,12 +15,14 @@ int main(int argc, char const *argv[])
     }
     
     int srcfd;
-    srcfd = open(argv[1], O_WRONLY|O_CREAT|O_TRUNC, 0600); // 默认打开最小的，所以打开的是1
+    srcfd = open(argv[1], O_WRONLY|O_CREAT|O_TRUNC, 0600);
     if (srcfd < 0)
     {
-        perror("open fail.\n");
+        perror("dup fail.\n");
         exit(1);
     }
+    close(1);
+    dup(srcfd);
 
     puts("hello world.");
     return 0;
