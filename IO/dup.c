@@ -21,8 +21,7 @@ int main(int argc, char const *argv[])
         perror("dup fail.\n");
         exit(1);
     }
-    close(1);
-    dup(srcfd);
+    dup2(srcfd, 1);
 
     puts("hello world.");
     return 0;
