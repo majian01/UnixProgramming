@@ -16,3 +16,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
 
 add_subdirectory(IO)
 add_subdirectory(FileSystem)
+add_subdirectory(String_test)
+add_subdirectory(Thread)
+add_subdirectory(Process)
