@@ -1,6 +1,8 @@
 {
     "files.associations": {
-        "cstring": "c"
+        "cstring": "c",
+        "mytbf.h": "c"
     },
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "C_Cpp.errorSquiggles": "disabled"
 }

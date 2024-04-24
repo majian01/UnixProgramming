@@ -1,0 +1,1 @@
+add_executable(sigtbf main.c mytbf.c mytbf.h)

@@ -1,0 +1,35 @@
+信号会打断阻塞的系统调用
+
+可重入函数：第一次调用还没有结束就能接受第二次调用（解决信号不可靠问题）
+
+
+raise
+kill
+abort
+alarm  ->   SIGALRM
+pause  ->   阻塞挂起，让出时间片
+system
+sleep
+
+
+令牌桶  ->  闲着就攒权限
+
+anytimer暂时没看
+
+
+信号集
+sigemptyset(sigset_t* set)
+
+信号屏蔽字处理
+int sigprocmask(int how, const sigset_t* set, sigset_t* oldset);
+第二个参数为const类型，因此，这个函数的作用是使用set信号集对屏蔽字进行how处理
+并将原来的信号集保存到oldset中
+返回值0表示成功  -1表示失败，同时设置errno
+
+
+
+sigsuspend实际是将sigprocmask和pause结合起来原子操作
+
+sigaction 解决信号处理函数重入问题
+
+
